@@ -83,19 +83,15 @@
     /* Fallback background color, text color */
     @apply bg-background text-foreground;
     
-    /* Tree background image. For actual image, use a specific, optimized image. Placeholder: data-ai-hint="forest tree background" */
-    background-image: url('https://picsum.photos/1920/1080?blur=2'); 
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Keeps background fixed while content scrolls */
+    /* CSS Tree background is now handled by a component and specific CSS classes */
+    /* background-image: url('https://picsum.photos/1920/1080?blur=2'); -- REMOVED */
 
     scroll-behavior: smooth;
     position: relative; /* Needed for z-index stacking context for pseudo-element */
     z-index: 0; /* Establishes a stacking context for body children */
   }
 
-  /* Semi-transparent overlay for readability over the background image */
+  /* Semi-transparent overlay for readability over the background */
   body::before {
     content: "";
     position: fixed; /* Covers the entire viewport */
@@ -105,10 +101,79 @@
     bottom: 0;
     /* Uses the theme's --background color with opacity. Adapts to dark/light mode. */
     background-color: hsla(var(--background), 0.85); 
-    z-index: -1; /* Sits behind body content but on top of body's background-image */
+    z-index: -1; /* Sits behind body content but on top of the CSS tree background */
   }
 
   section {
     @apply py-16 md:py-24;
   }
+}
+
+/* CSS Tree Styles */
+.css-tree-background {
+  position: fixed;
+  inset: 0;
+  z-index: -2; /* Behind the body::before overlay */
+  overflow: hidden; /* Prevent scrollbars if tree is too large */
+  display: flex;
+  align-items: flex-end; /* Tree at the bottom */
+  justify-content: center; /* Tree in the center */
+  pointer-events: none; /* Make it non-interactive */
+}
+
+.css-tree {
+  position: relative;
+  width: 200px; /* Base width */
+  height: 450px; /* Total height of tree */
+}
+
+.css-tree-trunk {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px; /* Width of the trunk */
+  height: 150px; /* Height of the trunk */
+  background-color: hsl(var(--foreground)); /* Dark Brown */
+  border-radius: 10px 10px 0 0; /* Slightly rounded top */
+}
+
+.css-tree-foliage {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.foliage-layer1 { /* Bottom layer */
+  bottom: 130px; /* Sits on top of trunk, slightly overlapping */
+  border-left-width: 100px;
+  border-right-width: 100px;
+  border-bottom-width: 150px;
+  border-bottom-color: hsl(var(--primary)); /* Forest Green */
+  z-index: 3;
+}
+
+.foliage-layer2 { /* Middle layer */
+  bottom: 230px; /* Overlaps layer 1 */
+  border-left-width: 80px;
+  border-right-width: 80px;
+  border-bottom-width: 130px;
+  border-bottom-color: hsl(120, 39%, 45%); /* Slightly Lighter Forest Green */
+  z-index: 2;
+}
+
+.foliage-layer3 { /* Top layer */
+  bottom: 320px; /* Overlaps layer 2 */
+  border-left-width: 60px;
+  border-right-width: 60px;
+  border-bottom-width: 110px;
+  border-bottom-color: hsl(var(--accent)); /* Vibrant Leaf Green */
+  z-index: 1;
 }
