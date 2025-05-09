@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-}
-
 @layer base {
   :root {
     --background: 40 33% 95%; /* Light Beige */
@@ -83,9 +79,35 @@ body {
     @apply border-border;
   }
   body {
+    font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+    /* Fallback background color, text color */
     @apply bg-background text-foreground;
+    
+    /* Tree background image. For actual image, use a specific, optimized image. Placeholder: data-ai-hint="forest tree background" */
+    background-image: url('https://picsum.photos/1920/1080?blur=2'); 
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Keeps background fixed while content scrolls */
+
     scroll-behavior: smooth;
+    position: relative; /* Needed for z-index stacking context for pseudo-element */
+    z-index: 0; /* Establishes a stacking context for body children */
   }
+
+  /* Semi-transparent overlay for readability over the background image */
+  body::before {
+    content: "";
+    position: fixed; /* Covers the entire viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Uses the theme's --background color with opacity. Adapts to dark/light mode. */
+    background-color: hsla(var(--background), 0.85); 
+    z-index: -1; /* Sits behind body content but on top of body's background-image */
+  }
+
   section {
     @apply py-16 md:py-24;
   }
