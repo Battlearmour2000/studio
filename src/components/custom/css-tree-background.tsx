@@ -11,6 +11,8 @@ export default function CssTreeBackground() {
           <div className="css-oak-clump clump3"></div>
           <div className="css-oak-clump clump4"></div>
           <div className="css-oak-clump clump5"></div>
+          <div className="css-oak-clump clump6"></div> {/* New clump */}
+          <div className="css-oak-clump clump7"></div> {/* New clump */}
         </div>
       </div>
     </div>
