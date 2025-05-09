@@ -3,10 +3,12 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import CssTreeBackground from '@/components/custom/css-tree-background';
 
 export default function HeroSection() {
   return (
     <section className="bg-gradient-to-br from-primary/10 via-background to-background relative overflow-hidden">
+      <CssTreeBackground /> {/* Added CSS Tree here */}
       <div className="container mx-auto px-4 md:px-8 py-20 md:py-32 text-center">
         <div className="absolute -top-20 -left-20 w-72 h-72 bg-primary/20 rounded-full opacity-50 filter blur-3xl animate-pulse-slow"></div>
         <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-accent/20 rounded-full opacity-50 filter blur-3xl animate-pulse-slow animation-delay-2000"></div>

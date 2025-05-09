@@ -3,11 +3,15 @@ import React from 'react';
 export default function CssTreeBackground() {
   return (
     <div className="css-tree-background" aria-hidden="true">
-      <div className="css-tree">
-        <div className="css-tree-trunk"></div>
-        <div className="css-tree-foliage foliage-layer1"></div>
-        <div className="css-tree-foliage foliage-layer2"></div>
-        <div className="css-tree-foliage foliage-layer3"></div>
+      <div className="css-oak-tree"> {/* Renamed from css-tree to css-oak-tree */}
+        <div className="css-oak-trunk"></div>
+        <div className="css-oak-foliage">
+          <div className="css-oak-clump clump1"></div>
+          <div className="css-oak-clump clump2"></div>
+          <div className="css-oak-clump clump3"></div>
+          <div className="css-oak-clump clump4"></div>
+          <div className="css-oak-clump clump5"></div>
+        </div>
       </div>
     </div>
   );

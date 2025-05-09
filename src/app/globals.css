@@ -83,9 +83,6 @@
     /* Fallback background color, text color */
     @apply bg-background text-foreground;
     
-    /* CSS Tree background is now handled by a component and specific CSS classes */
-    /* background-image: url('https://picsum.photos/1920/1080?blur=2'); -- REMOVED */
-
     scroll-behavior: smooth;
     position: relative; /* Needed for z-index stacking context for pseudo-element */
     z-index: 0; /* Establishes a stacking context for body children */
@@ -121,59 +118,84 @@
   pointer-events: none; /* Make it non-interactive */
 }
 
-.css-tree {
+.css-oak-tree { /* Renamed from .css-tree */
   position: relative;
-  width: 200px; /* Base width */
-  height: 450px; /* Total height of tree */
+  width: 300px; /* Wider canopy for oak */
+  height: 400px; /* Total height of oak tree */
 }
 
-.css-tree-trunk {
+.css-oak-trunk { /* Renamed and restyled from .css-tree-trunk */
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 40px; /* Width of the trunk */
-  height: 150px; /* Height of the trunk */
+  width: 60px; /* Wider oak trunk */
+  height: 150px; /* Oak trunk height */
   background-color: hsl(var(--foreground)); /* Dark Brown */
-  border-radius: 10px 10px 0 0; /* Slightly rounded top */
+  border-radius: 10px 10px 0 0; /* Rounded top for trunk */
 }
 
-.css-tree-foliage {
+.css-oak-foliage { /* New container for oak foliage clumps */
   position: absolute;
+  bottom: 140px; /* Start foliage just above trunk, allow some overlap */
   left: 50%;
   transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left-style: solid;
-  border-right-style: solid;
-  border-bottom-style: solid;
-  border-left-color: transparent;
-  border-right-color: transparent;
+  width: 100%; /* Foliage container takes full width of .css-oak-tree */
+  height: 260px; /* Foliage container height */
 }
 
-.foliage-layer1 { /* Bottom layer */
-  bottom: 130px; /* Sits on top of trunk, slightly overlapping */
-  border-left-width: 100px;
-  border-right-width: 100px;
-  border-bottom-width: 150px;
-  border-bottom-color: hsl(var(--primary)); /* Forest Green */
+.css-oak-clump {
+  position: absolute;
+  border-radius: 50%; /* Make them circular/oval by default */
+  opacity: 0.95; /* Slight transparency for depth */
+}
+
+.css-oak-clump.clump1 {
+  width: 130px;
+  height: 110px;
+  background-color: hsl(var(--primary)); /* Forest Green */
+  bottom: 40px; 
+  left: 50%;
+  transform: translateX(-70%) rotate(-15deg); /* Position to the left part of center */
   z-index: 3;
 }
 
-.foliage-layer2 { /* Middle layer */
-  bottom: 230px; /* Overlaps layer 1 */
-  border-left-width: 80px;
-  border-right-width: 80px;
-  border-bottom-width: 130px;
-  border-bottom-color: hsl(120, 39%, 45%); /* Slightly Lighter Forest Green */
+.css-oak-clump.clump2 {
+  width: 150px;
+  height: 120px;
+  background-color: hsl(120, 39%, 45%); /* Slightly Lighter Forest Green */
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-30%) rotate(10deg); /* Position to the right part of center */
   z-index: 2;
 }
 
-.foliage-layer3 { /* Top layer */
-  bottom: 320px; /* Overlaps layer 2 */
-  border-left-width: 60px;
-  border-right-width: 60px;
-  border-bottom-width: 110px;
-  border-bottom-color: hsl(var(--accent)); /* Vibrant Leaf Green */
+.css-oak-clump.clump3 {
+  width: 120px;
+  height: 100px;
+  background-color: hsl(var(--accent)); /* Vibrant Leaf Green */
+  bottom: 90px; /* Higher */
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px) rotate(-5deg); /* Central top clump */
+  z-index: 4; 
+}
+
+.css-oak-clump.clump4 {
+  width: 100px;
+  height: 90px;
+  background-color: hsl(120, 39%, 38%); /* Darker shade for depth */
+  bottom: 20px;
+  left: 10%; /* More to the left */
+  transform: rotate(20deg);
   z-index: 1;
+}
+
+.css-oak-clump.clump5 {
+  width: 140px;
+  height: 110px;
+  background-color: hsl(120, 39%, 42%); /* Medium shade */
+  bottom: 50px;
+  right: 5%; /* More to the right */
+  transform: rotate(-20deg);
+  z-index: 2;
 }
