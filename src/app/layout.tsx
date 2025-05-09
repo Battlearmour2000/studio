@@ -5,7 +5,6 @@ import { Toaster } from '@/components/ui/toaster';
 import Navbar from '@/components/custom/navbar';
 import LanguageSwitcher from '@/components/custom/language-switcher';
 import Footer from '@/components/custom/footer';
-// import CssTreeBackground from '@/components/custom/css-tree-background'; // Removed
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,7 +29,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
-        {/* <CssTreeBackground /> */} {/* Removed */}
         <LanguageSwitcher />
         <Navbar />
         <main className="flex-grow">
