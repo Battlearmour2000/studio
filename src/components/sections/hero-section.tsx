@@ -3,12 +3,24 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import CssTreeBackground from '@/components/custom/css-tree-background';
 
 export default function HeroSection() {
   return (
-    <section className="bg-gradient-to-br from-primary/10 via-background to-background relative overflow-hidden">
-      <CssTreeBackground /> {/* Added CSS Tree here */}
+    <section className="bg-gradient-to-br from-primary/1 via-background to-background relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-[-2]">
+        <Image
+          src="/images/tree-colors.png" // Replace with the actual image path
+          alt="Hero background"
+          layout="fill"
+          objectFit="cover"
+          priority
+        />
+      </div>
+
+      {/* Semi-Transparent Layer */}
+      <div className="absolute inset-0 bg-black/50 z-[-1]"></div>
+
       <div className="container mx-auto px-4 md:px-8 py-20 md:py-32 text-center">
         <div className="absolute -top-20 -left-20 w-72 h-72 bg-primary/20 rounded-full opacity-50 filter blur-3xl animate-pulse-slow"></div>
         <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-accent/20 rounded-full opacity-50 filter blur-3xl animate-pulse-slow animation-delay-2000"></div>
@@ -16,7 +28,7 @@ export default function HeroSection() {
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-primary drop-shadow-md">
           Welcome to Famnen Hub
         </h1>
-        <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p className="text-lg md:text-xl text-white text-foreground/80 max-w-2xl mx-auto mb-10 leading-relaxed">
           Your connection to community support and engagement. Discover how we make a difference and how you can be a part of it.
         </p>
         <div className="flex justify-center space-x-4">
