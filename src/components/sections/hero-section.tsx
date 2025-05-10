@@ -19,13 +19,13 @@ export default function HeroSection() {
       </div>
 
       {/* Semi-Transparent Layer */}
-      <div className="absolute inset-0 bg-black/50 z-[-1]"></div>
+      <div className="absolute inset-0 bg-black/60 z-[-1]"></div>
 
       <div className="container mx-auto px-4 md:px-8 py-20 md:py-32 text-center">
         <div className="absolute -top-20 -left-20 w-72 h-72 bg-primary/20 rounded-full opacity-50 filter blur-3xl animate-pulse-slow"></div>
         <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-accent/20 rounded-full opacity-50 filter blur-3xl animate-pulse-slow animation-delay-2000"></div>
         
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-primary drop-shadow-md">
+        <h1 className="text-4xl md:text-6xl text-white font-bold tracking-tight mb-6 text-primary drop-shadow-md">
           Welcome to Famnen Hub
         </h1>
         <p className="text-lg md:text-xl text-white text-foreground/80 max-w-2xl mx-auto mb-10 leading-relaxed">
